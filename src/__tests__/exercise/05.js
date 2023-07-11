@@ -44,7 +44,9 @@ test(`omitting the username results in an error`, async () => {
   expect(screen.getByLabelText(/loading/i)).not.toBeNull()
   await waitForElementToBeRemoved(() => screen.getByLabelText(/loading/i))
 
-  expect(screen.getByRole('alert')).toHaveTextContent(/username required/i)
+  expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot(
+    `"username required"`,
+  )
 })
 
 test(`omitting the password results in an error`, async () => {
@@ -57,5 +59,7 @@ test(`omitting the password results in an error`, async () => {
   expect(screen.getByLabelText(/loading/i)).not.toBeNull()
   await waitForElementToBeRemoved(() => screen.getByLabelText(/loading/i))
 
-  expect(screen.getByRole('alert')).toHaveTextContent(/password required/i)
+  expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot(
+    `"password required"`,
+  )
 })
